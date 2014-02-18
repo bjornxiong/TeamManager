@@ -1,0 +1,20 @@
+﻿<ul id="menu"> 
+    <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+    <li>@Html.ActionLink("Update Account", "Index", "Home")</li>
+    <li>@Html.ActionLink("Daily Report", "Index", "Home")</li>
+    <li>@Html.ActionLink("Break Off", "Index", "Home")</li>
+    <li>@Html.ActionLink("Over Time", "Index", "Home")</li>
+    <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+</ul>
+@if (User.Identity.Name == "yemol")
+{ 
+    <ul id="menuMan">
+        <li style="">@Html.ActionLink("Daily Report", "Index", "Home")</li>    
+        <li>@Html.ActionLink("Weekly Report", "Index", "Home")</li>    
+        <li>@Html.ActionLink("Daily Project Report List", "Index", "Home")</li>    
+        <li>@Html.ActionLink("Break Off Manager", "Index", "Home")</li>    
+        <li>@Html.ActionLink("Over Off Manager", "Index", "Home")</li>    
+    </ul>
+    
+}
+

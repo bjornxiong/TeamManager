@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TeamManage_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="TeamManage_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BreakOffs" EntityType="TeamManage_Model.BreakOff" />
+    <EntitySet Name="DailyProjectReports" EntityType="TeamManage_Model.DailyProjectReport" />
+    <EntitySet Name="DailyReports" EntityType="TeamManage_Model.DailyReport" />
+    <EntitySet Name="OverTimes" EntityType="TeamManage_Model.OverTime" />
+    <EntitySet Name="QA_Files" EntityType="TeamManage_Model.QA_Files" />
+    <EntitySet Name="QA_Request" EntityType="TeamManage_Model.QA_Request" />
+    <EntitySet Name="QA_Test" EntityType="TeamManage_Model.QA_Test" />
+    <EntitySet Name="QA_TestIssue" EntityType="TeamManage_Model.QA_TestIssue" />
+    <EntitySet Name="sysdiagrams" EntityType="TeamManage_Model.sysdiagram" />
+    <EntitySet Name="Tests" EntityType="TeamManage_Model.Test" />
+    <EntitySet Name="TraineeAttendances" EntityType="TeamManage_Model.TraineeAttendance" />
+    <EntitySet Name="TraineeBreakOffs" EntityType="TeamManage_Model.TraineeBreakOff" />
+    <EntitySet Name="UploadFiles" EntityType="TeamManage_Model.UploadFile" />
+    <EntitySet Name="UserLeaves" EntityType="TeamManage_Model.UserLeave" />
+    <EntitySet Name="UserLeaveCutLogs" EntityType="TeamManage_Model.UserLeaveCutLog" />
+    <EntitySet Name="UserRoles" EntityType="TeamManage_Model.UserRole" />
+    <EntitySet Name="Users" EntityType="TeamManage_Model.User" />
+    <EntitySet Name="UserTypes" EntityType="TeamManage_Model.UserType" />
+    <AssociationSet Name="FK_QA_Request_QA_Request" Association="TeamManage_Model.FK_QA_Request_QA_Request">
+      <End Role="QA_Request" EntitySet="QA_Request" />
+      <End Role="QA_Request1" EntitySet="QA_Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QA_Test_QA_Request" Association="TeamManage_Model.FK_QA_Test_QA_Request">
+      <End Role="QA_Request" EntitySet="QA_Request" />
+      <End Role="QA_Test" EntitySet="QA_Test" />
+    </AssociationSet>
+    <AssociationSet Name="QA_RequestFile" Association="TeamManage_Model.QA_RequestFile">
+      <End Role="QA_Files" EntitySet="QA_Files" />
+      <End Role="QA_Request" EntitySet="QA_Request" />
+    </AssociationSet>
+    <AssociationSet Name="QA_TestFile" Association="TeamManage_Model.QA_TestFile">
+      <End Role="QA_Files" EntitySet="QA_Files" />
+      <End Role="QA_Test" EntitySet="QA_Test" />
+    </AssociationSet>
+    <AssociationSet Name="QA_TestIssueFile" Association="TeamManage_Model.QA_TestIssueFile">
+      <End Role="QA_Files" EntitySet="QA_Files" />
+      <End Role="QA_TestIssue" EntitySet="QA_TestIssue" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BreakOff">
+    <Key>
+      <PropertyRef Name="BreakOffGuid" />
+    </Key>
+    <Property Name="BreakOffGuid" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BreakOffFrom" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BreakOffTo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CutFrom" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="DailyProjectReport">
+    <Key>
+      <PropertyRef Name="DailyProjectReportID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Project" />
+      <PropertyRef Name="Report" />
+      <PropertyRef Name="AddDate" />
+    </Key>
+    <Property Name="DailyProjectReportID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Project" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Report" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="DailyReport">
+    <Key>
+      <PropertyRef Name="DailyReportID" />
+    </Key>
+    <Property Name="DailyReportID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Report" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="AddDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="OverTime">
+    <Key>
+      <PropertyRef Name="OverTimeGuid" />
+    </Key>
+    <Property Name="OverTimeGuid" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Hours" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="QA_Files">
+    <Key>
+      <PropertyRef Name="FileID" />
+    </Key>
+    <Property Name="FileID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="FileContent" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Type" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="QA_Request" Relationship="TeamManage_Model.QA_RequestFile" FromRole="QA_Files" ToRole="QA_Request" />
+    <NavigationProperty Name="QA_Test" Relationship="TeamManage_Model.QA_TestFile" FromRole="QA_Files" ToRole="QA_Test" />
+    <NavigationProperty Name="QA_TestIssue" Relationship="TeamManage_Model.QA_TestIssueFile" FromRole="QA_Files" ToRole="QA_TestIssue" />
+  </EntityType>
+  <EntityType Name="QA_Request">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="Guid" Nullable="false" />
+    <Property Name="Project" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="RelatedJIRA" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="Developer" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Instruction" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Comments" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Fields" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Log" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="InsertDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="QA_Request1" Relationship="TeamManage_Model.FK_QA_Request_QA_Request" FromRole="QA_Request" ToRole="QA_Request1" />
+    <NavigationProperty Name="QA_Request2" Relationship="TeamManage_Model.FK_QA_Request_QA_Request" FromRole="QA_Request1" ToRole="QA_Request" />
+    <NavigationProperty Name="QA_Test" Relationship="TeamManage_Model.FK_QA_Test_QA_Request" FromRole="QA_Request" ToRole="QA_Test" />
+    <NavigationProperty Name="QA_Files" Relationship="TeamManage_Model.QA_RequestFile" FromRole="QA_Request" ToRole="QA_Files" />
+  </EntityType>
+  <EntityType Name="QA_Test">
+    <Key>
+      <PropertyRef Name="TestReportID" />
+    </Key>
+    <Property Name="TestReportID" Type="Guid" Nullable="false" />
+    <Property Name="RequestID" Type="Guid" Nullable="false" />
+    <Property Name="Result" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CodeEvaluate" Type="Int32" />
+    <Property Name="Tester" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Comments" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Log" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="InsertTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="QA_Request" Relationship="TeamManage_Model.FK_QA_Test_QA_Request" FromRole="QA_Test" ToRole="QA_Request" />
+    <NavigationProperty Name="QA_Files" Relationship="TeamManage_Model.QA_TestFile" FromRole="QA_Test" ToRole="QA_Files" />
+  </EntityType>
+  <EntityType Name="QA_TestIssue">
+    <Key>
+      <PropertyRef Name="TestIssueID" />
+    </Key>
+    <Property Name="TestIssueID" Type="Guid" Nullable="false" />
+    <Property Name="TestReportID" Type="Guid" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="Byte" />
+    <Property Name="Log" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="QA_Files" Relationship="TeamManage_Model.QA_TestIssueFile" FromRole="QA_TestIssue" ToRole="QA_Files" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="Aid" />
+    </Key>
+    <Property Name="Aid" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TraineeAttendance">
+    <Key>
+      <PropertyRef Name="AttendanceGuid" />
+    </Key>
+    <Property Name="AttendanceGuid" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AttendanceFrom" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AttendanceTo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comments" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TraineeBreakOff">
+    <Key>
+      <PropertyRef Name="BreakOffGuid" />
+    </Key>
+    <Property Name="BreakOffGuid" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BreakOffFrom" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BreakOffTo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UploadFile">
+    <Key>
+      <PropertyRef Name="UploadFileID" />
+    </Key>
+    <Property Name="UploadFileID" Type="Guid" Nullable="false" />
+    <Property Name="FileName" Type="String" Nullable="false" MaxLength="1024" Unicode="false" FixedLength="false" />
+    <Property Name="FileContent" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UserLeave">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="AnnualDays" />
+      <PropertyRef Name="AnnualDaysRest" />
+      <PropertyRef Name="OverTime" />
+      <PropertyRef Name="OverTimeRest" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AnnualDays" Type="Int32" Nullable="false" />
+    <Property Name="AnnualDaysRest" Type="Int32" Nullable="false" />
+    <Property Name="OverTime" Type="Int32" Nullable="false" />
+    <Property Name="OverTimeRest" Type="Int32" Nullable="false" />
+    <Property Name="InitDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="AnnualDaysERP" Type="Int32" />
+  </EntityType>
+  <EntityType Name="UserLeaveCutLog">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="BreakOFFID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="LeaveType" />
+      <PropertyRef Name="CutHour" />
+      <PropertyRef Name="CutDateTime" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BreakOFFID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="LeaveType" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CutHour" Type="Int32" Nullable="false" />
+    <Property Name="CutDateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="GroupName" />
+    </Key>
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="RoleID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
+    <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UserName" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="LoginPassword" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="LastLogin" Type="DateTime" Precision="3" />
+    <Property Name="IsTrainee" Type="Boolean" />
+    <Property Name="IsDeparted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_QA_Request_QA_Request">
+    <End Role="QA_Request" Type="TeamManage_Model.QA_Request" Multiplicity="1" />
+    <End Role="QA_Request1" Type="TeamManage_Model.QA_Request" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="QA_Request">
+        <PropertyRef Name="RequestID" />
+      </Principal>
+      <Dependent Role="QA_Request1">
+        <PropertyRef Name="RequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QA_Test_QA_Request">
+    <End Role="QA_Request" Type="TeamManage_Model.QA_Request" Multiplicity="1" />
+    <End Role="QA_Test" Type="TeamManage_Model.QA_Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QA_Request">
+        <PropertyRef Name="RequestID" />
+      </Principal>
+      <Dependent Role="QA_Test">
+        <PropertyRef Name="RequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QA_RequestFile">
+    <End Role="QA_Files" Type="TeamManage_Model.QA_Files" Multiplicity="*" />
+    <End Role="QA_Request" Type="TeamManage_Model.QA_Request" Multiplicity="*" />
+  </Association>
+  <Association Name="QA_TestFile">
+    <End Role="QA_Files" Type="TeamManage_Model.QA_Files" Multiplicity="*" />
+    <End Role="QA_Test" Type="TeamManage_Model.QA_Test" Multiplicity="*" />
+  </Association>
+  <Association Name="QA_TestIssueFile">
+    <End Role="QA_Files" Type="TeamManage_Model.QA_Files" Multiplicity="*" />
+    <End Role="QA_TestIssue" Type="TeamManage_Model.QA_TestIssue" Multiplicity="*" />
+  </Association>
+</Schema>

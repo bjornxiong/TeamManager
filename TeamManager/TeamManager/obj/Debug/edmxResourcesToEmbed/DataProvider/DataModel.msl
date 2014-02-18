@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TeamManage_ModelStoreContainer" CdmEntityContainer="TeamManage_Entities">
+    <EntitySetMapping Name="BreakOffs">
+      <EntityTypeMapping TypeName="TeamManage_Model.BreakOff">
+        <MappingFragment StoreEntitySet="BreakOff">
+          <ScalarProperty Name="BreakOffGuid" ColumnName="BreakOffGuid" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BreakOffFrom" ColumnName="BreakOffFrom" />
+          <ScalarProperty Name="BreakOffTo" ColumnName="BreakOffTo" />
+          <ScalarProperty Name="CutFrom" ColumnName="CutFrom" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DailyProjectReports">
+      <EntityTypeMapping TypeName="TeamManage_Model.DailyProjectReport">
+        <MappingFragment StoreEntitySet="DailyProjectReport">
+          <ScalarProperty Name="DailyProjectReportID" ColumnName="DailyProjectReportID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Project" ColumnName="Project" />
+          <ScalarProperty Name="Report" ColumnName="Report" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DailyReports">
+      <EntityTypeMapping TypeName="TeamManage_Model.DailyReport">
+        <MappingFragment StoreEntitySet="DailyReport">
+          <ScalarProperty Name="DailyReportID" ColumnName="DailyReportID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Report" ColumnName="Report" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OverTimes">
+      <EntityTypeMapping TypeName="TeamManage_Model.OverTime">
+        <MappingFragment StoreEntitySet="OverTime">
+          <ScalarProperty Name="OverTimeGuid" ColumnName="OverTimeGuid" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+          <ScalarProperty Name="Hours" ColumnName="Hours" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QA_Files">
+      <EntityTypeMapping TypeName="TeamManage_Model.QA_Files">
+        <MappingFragment StoreEntitySet="QA_Files">
+          <ScalarProperty Name="FileID" ColumnName="FileID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QA_Request">
+      <EntityTypeMapping TypeName="TeamManage_Model.QA_Request">
+        <MappingFragment StoreEntitySet="QA_Request">
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="Project" ColumnName="Project" />
+          <ScalarProperty Name="RelatedJIRA" ColumnName="RelatedJIRA" />
+          <ScalarProperty Name="Developer" ColumnName="Developer" />
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Fields" ColumnName="Fields" />
+          <ScalarProperty Name="Log" ColumnName="Log" />
+          <ScalarProperty Name="InsertDateTime" ColumnName="InsertDateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QA_Test">
+      <EntityTypeMapping TypeName="TeamManage_Model.QA_Test">
+        <MappingFragment StoreEntitySet="QA_Test">
+          <ScalarProperty Name="TestReportID" ColumnName="TestReportID" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CodeEvaluate" ColumnName="CodeEvaluate" />
+          <ScalarProperty Name="Tester" ColumnName="Tester" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Log" ColumnName="Log" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QA_TestIssue">
+      <EntityTypeMapping TypeName="TeamManage_Model.QA_TestIssue">
+        <MappingFragment StoreEntitySet="QA_TestIssue">
+          <ScalarProperty Name="TestIssueID" ColumnName="TestIssueID" />
+          <ScalarProperty Name="TestReportID" ColumnName="TestReportID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Log" ColumnName="Log" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="TeamManage_Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tests">
+      <EntityTypeMapping TypeName="TeamManage_Model.Test">
+        <MappingFragment StoreEntitySet="Test">
+          <ScalarProperty Name="Aid" ColumnName="Aid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TraineeAttendances">
+      <EntityTypeMapping TypeName="TeamManage_Model.TraineeAttendance">
+        <MappingFragment StoreEntitySet="TraineeAttendance">
+          <ScalarProperty Name="AttendanceGuid" ColumnName="AttendanceGuid" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="AttendanceFrom" ColumnName="AttendanceFrom" />
+          <ScalarProperty Name="AttendanceTo" ColumnName="AttendanceTo" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TraineeBreakOffs">
+      <EntityTypeMapping TypeName="TeamManage_Model.TraineeBreakOff">
+        <MappingFragment StoreEntitySet="TraineeBreakOff">
+          <ScalarProperty Name="BreakOffGuid" ColumnName="BreakOffGuid" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BreakOffFrom" ColumnName="BreakOffFrom" />
+          <ScalarProperty Name="BreakOffTo" ColumnName="BreakOffTo" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UploadFiles">
+      <EntityTypeMapping TypeName="TeamManage_Model.UploadFile">
+        <MappingFragment StoreEntitySet="UploadFile">
+          <ScalarProperty Name="UploadFileID" ColumnName="UploadFileID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLeaves">
+      <EntityTypeMapping TypeName="TeamManage_Model.UserLeave">
+        <MappingFragment StoreEntitySet="UserLeave">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="AnnualDays" ColumnName="AnnualDays" />
+          <ScalarProperty Name="AnnualDaysRest" ColumnName="AnnualDaysRest" />
+          <ScalarProperty Name="OverTime" ColumnName="OverTime" />
+          <ScalarProperty Name="OverTimeRest" ColumnName="OverTimeRest" />
+          <ScalarProperty Name="InitDateTime" ColumnName="InitDateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="AnnualDaysERP" ColumnName="AnnualDaysERP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLeaveCutLogs">
+      <EntityTypeMapping TypeName="TeamManage_Model.UserLeaveCutLog">
+        <MappingFragment StoreEntitySet="UserLeaveCutLog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BreakOFFID" ColumnName="BreakOFFID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LeaveType" ColumnName="LeaveType" />
+          <ScalarProperty Name="CutHour" ColumnName="CutHour" />
+          <ScalarProperty Name="CutDateTime" ColumnName="CutDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="TeamManage_Model.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="TeamManage_Model.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
+          <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+          <ScalarProperty Name="IsTrainee" ColumnName="IsTrainee" />
+          <ScalarProperty Name="IsDeparted" ColumnName="IsDeparted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="TeamManage_Model.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="QA_RequestFile" TypeName="TeamManage_Model.QA_RequestFile" StoreEntitySet="QA_RequestFile">
+      <EndProperty Name="QA_Files">
+        <ScalarProperty Name="FileID" ColumnName="FileID" />
+      </EndProperty>
+      <EndProperty Name="QA_Request">
+        <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="QA_TestFile" TypeName="TeamManage_Model.QA_TestFile" StoreEntitySet="QA_TestFile">
+      <EndProperty Name="QA_Files">
+        <ScalarProperty Name="FileID" ColumnName="FileID" />
+      </EndProperty>
+      <EndProperty Name="QA_Test">
+        <ScalarProperty Name="TestReportID" ColumnName="TestReportID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="QA_TestIssueFile" TypeName="TeamManage_Model.QA_TestIssueFile" StoreEntitySet="QA_TestIssueFile">
+      <EndProperty Name="QA_Files">
+        <ScalarProperty Name="FileID" ColumnName="FileID" />
+      </EndProperty>
+      <EndProperty Name="QA_TestIssue">
+        <ScalarProperty Name="TestIssueID" ColumnName="TestIssueID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
