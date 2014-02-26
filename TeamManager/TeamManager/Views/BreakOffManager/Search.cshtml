@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TeamManager.DataProvider.BreakOff>
+
+@{
+    ViewBag.Title = "Search";
+}
+<link href="Scripts/assets/css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="Scripts/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+<link type="text/css" href="Scripts/assets/css/font-awesome.min.css" rel="stylesheet" /> 
+<link href="Scripts/assets/css/docs.css" rel="stylesheet">
+<link href="Scripts/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+<script src="~/Scripts/WdatePicker.js"></script>
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BreakOffFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BreakOffTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CutFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BreakOffFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BreakOffTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CutFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

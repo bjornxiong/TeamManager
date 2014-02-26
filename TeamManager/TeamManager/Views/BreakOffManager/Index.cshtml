@@ -1,0 +1,94 @@
+﻿@model IEnumerable<TeamManager.DataProvider.BreakOff>
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.breakofffrom = DateTime.Now;
+    ViewBag.breakoffto = DateTime.Now.AddDays(7);
+}
+<link href="Scripts/assets/css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="Scripts/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+<link type="text/css" href="Scripts/assets/css/font-awesome.min.css" rel="stylesheet" /> 
+<link href="Scripts/assets/css/docs.css" rel="stylesheet">
+<link href="Scripts/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+<script src="~/Scripts/WdatePicker.js"></script>
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+@using (Html.BeginForm("Search", "BreakOffManager", FormMethod.Post, new { @id = "formadd" }))
+{ 
+            <table>
+                <tr>
+                    <td>
+                        BreakOffFrom
+                        <input style="width:100px" type="text" id="SearchDatefrom" name="SearchDatefrom" onclick="WdatePicker({ dateFmt: 'yyyy/MM/dd' })" value= @ViewBag.breakofffrom/><br />
+                    </td>
+                    <td>
+                        BreakOffTo
+                        <input style="width:100px" type="text" id="SearchDateto" name="SearchDateto" onclick="WdatePicker({ dateFmt: 'yyyy/MM/dd' })" value= @ViewBag.breakoffto/><br />
+                    </td>
+                    <td>
+                        <select id="SearchString" name="SearchString" style="width:100px">
+                            <option value="Approve">Approve</option>
+                            <option value="Cancle">Cancle</option>
+                            <option value="Ask">Ask</option>
+                        </select>
+                    </td>
+                     <td>
+                        <button id="search" type="submit"class="ui-button-primary">Search</button>
+                         
+                    </td>
+                </tr>
+            </table>
+}
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BreakOffFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BreakOffTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CutFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BreakOffFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BreakOffTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CutFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @if (item.Status == "Approve")
+            {
+                <button id="approve" name="approve" class="button" type="submit" onclick="window.location.href='@Url.Action("Edit", "BreakOffManager")?id=@item.BreakOffGuid';" disabled>Approve</button>
+                <button id="cancle" name="cancle" class="button" type="submit" onclick="window.location.href='@Url.Action("Cancle", "BreakOffManager")?id=@item.BreakOffGuid';" disabled>Cancle</button>
+            }
+            else
+            {
+                  <button id="approve1" name="approve" class="button" type="submit" onclick="window.location.href='@Url.Action("Edit", "BreakOffManager")?id=@item.BreakOffGuid';">Approve</button>
+                  <button id="cancle1" name="cancle" class="button" type="submit" onclick="window.location.href='@Url.Action("Cancle", "BreakOffManager")?id=@item.BreakOffGuid';">Cancle</button>
+            }
+        </td>
+    </tr>
+}
+
+</table>

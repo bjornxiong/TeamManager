@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TeamManager.DataProvider.BreakOff>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+<link href="~/Content/themes/smoothness/jquery.ui.theme.css" rel="stylesheet" />
+<link href="~/Content/themes/smoothness/jquery-ui.min.css" rel="stylesheet" />
+<p>
+    @Html.ActionLink("Create New BreakOff", "Create")
+</p>
+ <div id="overTime" class="ui-widget">
+   <table class="ui-widget ui-widget-content">
+    <thead>
+        <tr class="ui-widget-header ">
+            <th>Datefrom</th>
+            <th>Dateto</th>
+            <th>CutFrom</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.BreakOffFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BreakOffTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CutFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @if (item.Status == "Ask")
+                {
+                                    
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BreakOffGuid })                                                                     
+                    @Html.ActionLink("Details", "Details", new { id = item.BreakOffGuid }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BreakOffGuid })
+            
+                }
+            </td>
+        </tr>
+    }
+
+  </table>
+</div>

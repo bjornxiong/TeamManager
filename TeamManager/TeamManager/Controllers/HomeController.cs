@@ -11,6 +11,7 @@ namespace TeamManager.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -31,7 +32,7 @@ namespace TeamManager.Controllers
             if (ModelState.IsValid)
             {
                 if (user.IsValid(user.UserID, user.Password))
-                {                    
+                {
                     FormsAuthentication.SetAuthCookie(user.UserID, false);
                     return Redirect(returnUrl);
                 }

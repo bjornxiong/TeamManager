@@ -1,0 +1,43 @@
+﻿@model TeamManager.DataProvider.BreakOff
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>BreakOff</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BreakOffFrom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BreakOffFrom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BreakOffTo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BreakOffTo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CutFrom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CutFrom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.BreakOffGuid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

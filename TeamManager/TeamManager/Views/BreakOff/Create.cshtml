@@ -1,0 +1,64 @@
+﻿@model TeamManager.DataProvider.BreakOff
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<script src="~/Scripts/WdatePicker.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery-1.7.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("form").submit(function (e) {
+            var from = new Date($("#breakofffrom").val());
+            var to = new Date($("#breakoffto").val());
+            if (from > to) {
+                alert('From date cannot be greater than to date.');
+                return false;
+            }
+        });
+
+        //var $action = "OverTimeManager/Search";
+        //$(this).attr("action", $action + "?from=" + $("#fromTime").val() + "&to=" + $("#toTime").val() + "&status=" + $("#status").val());
+    });
+</script>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>BreakOff</legend>
+
+        <strong>BreakOffFrom:</strong>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.BreakOffFrom,new { @id = "breakofffrom" ,onclick="WdatePicker({ dateFmt: 'yyyy/MM/dd HH:00:00', disabledDates: ['00\\:..\\:..', '01\\:..\\:..', '02\\:..\\:..',, '03\\:..\\:..', '04\\:..\\:..', '05\\:..\\:..', '06\\:..\\:..', '07\\:..\\:..', '08\\:..\\:..', '19\\:..\\:..', '20\\:..\\:..', '21\\:..\\:..', '22\\:..\\:..', '23\\:..\\:..'] })"})
+            @Html.ValidationMessageFor(model => model.BreakOffFrom)
+        </div>
+
+        <strong>BreakOffTo:</strong>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.BreakOffTo,new { @id = "breakoffto" ,onclick="WdatePicker({ dateFmt: 'yyyy/MM/dd HH:00:00', disabledDates: ['00\\:..\\:..', '01\\:..\\:..', '02\\:..\\:..',, '03\\:..\\:..', '04\\:..\\:..', '05\\:..\\:..', '06\\:..\\:..', '07\\:..\\:..', '08\\:..\\:..', '19\\:..\\:..', '20\\:..\\:..', '21\\:..\\:..', '22\\:..\\:..', '23\\:..\\:..'] })"})
+            @Html.ValidationMessageFor(model => model.BreakOffTo)
+        </div>
+
+       <strong>CutFrom:</strong>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.CutFrom, (IEnumerable<SelectListItem>)ViewData["CutFrom"], "--Select One--") 
+            @Html.ValidationMessageFor(model => model.CutFrom)
+        </div>
+
+
+        <p>
+            <input id="create" type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
